@@ -22,13 +22,14 @@ Installation is manual, because it's not yet available on the Firefox Extensions
 I'll release the .xpi here once it's published, meanwhile you can get it here: https://addons.mozilla.org/firefox/downloads/file/3382560/untube-1.1.0-fx.xpi
 
 ### Chrome
-_Working on it_
+_Waiting for review. You can run it unpacked, directly from source_
 
 ## Contributing
 Clone this repository and run the add-on in debugging mode, that way you can test and modify this add-on without having to install any package.
 
 Firefox: https://blog.mozilla.org/addons/2015/12/23/loading-temporary-add-ons/
 
-Chrome: _TODO_.
+Chrome: `chrome://extensions/` -> Toggle "Developer mode" -> "Load Unpacked"
+
 ## License
 GNU GPL v3

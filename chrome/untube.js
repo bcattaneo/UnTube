@@ -16,12 +16,14 @@ const skipButtonClass = 'ytp-ad-skip-button';
 
 // Get flags
 let hideRelated = true;
-let hideStored = browser.storage.sync.get();
-hideStored.then(gotRelatedConfig, errorRelatedConfig);
+// let hideStored = browser.storage.sync.get();
+chrome.storage.local.get('untubeRelated', function(value){
+    hideRelated = value ? value : false;
+});
 let hideAds = true;
 
 // Listener for state changes
-browser.runtime.onMessage.addListener(request => {
+chrome.runtime.onMessage.addListener(request => {
     hideRelated = request.untubeRelated;
 });
 
@@ -50,14 +52,6 @@ function hideShowAll(classNames, flag) {
             }
         }
     });
-}
-
-function gotRelatedConfig(obj){
-    hideRelated = obj.untubeRelated;
-}
-
-function errorRelatedConfig(obj){
-    hideRelated = false;
 }
 
 // Main loop
