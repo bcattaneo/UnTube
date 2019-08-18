@@ -26,22 +26,7 @@ browser.runtime.onMessage.addListener(request => {
 });
 
 // Create shared objects and start main loop
-createSharedObjects();
 loop();
-
-// Create shared objects
-function createSharedObjects() {
-    var sharedObj = {
-        toggleRelated: function() {
-            hideRelated = !hideRelated;
-        }
-    };
-    window.wrappedJSObject.sharedObj = cloneInto(
-        sharedObj,
-        window,
-        {cloneFunctions: true}
-    );
-}
 
 function toggleRelated(on) {
     relatedIds.forEach(function(e){
