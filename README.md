@@ -22,7 +22,7 @@ Installation is manual, because it's not yet available on the Firefox Extensions
 I'll release the .xpi here once it's published, meanwhile you can get it here: https://addons.mozilla.org/firefox/downloads/file/3382560/untube-1.1.0-fx.xpi
 
 ### Chrome
-_Waiting for review. You can run it unpacked, directly from source_
+Look for "UnTube" in the chrome web store.
 
 ## Contributing
 Clone this repository and run the add-on in debugging mode, that way you can test and modify this add-on without having to install any package.
