@@ -1,5 +1,5 @@
 // General
-const checkTimeout = 2000;
+const checkTimeout = 500;
 const toggleId = 'untube-toggle';
 
 // YouTube page classes/ids
@@ -11,13 +11,21 @@ const endScreenClasses = [
     'ytp-endscreen-next', 'ytp-endscreen-prev',
     'ytp-endscreen-previous'
 ];
+const cancelButtonClass = 'ytp-upnext-cancel-button';
+const skipButtonClass = 'ytp-ad-skip-button';
 
-// Toggle flags
+// Get flags
 let hideRelated = true;
+let hideStored = browser.storage.sync.get();
+hideStored.then(gotRelatedConfig, errorRelatedConfig);
 let hideAds = true;
 
+// Listener for state changes
+browser.runtime.onMessage.addListener(request => {
+    hideRelated = request.untubeRelated;
+});
+
 // Create shared objects and start main loop
-// createToggleBox();
 createSharedObjects();
 loop();
 
@@ -59,26 +67,16 @@ function hideShowAll(classNames, flag) {
     });
 }
 
-// function createToggleBox() {
-//     var link = document.createElement("a");
-//     var box = document.createElement("div");
-//     link.setAttribute("href", "javascript:window.sharedObj.toggleRelated();");
-//     box.style.position = "fixed";
-//     box.style.width = "50px";
-//     box.style.height = "50px";
-//     box.style.bottom = "0px";
-//     box.style.right = "0px";
-//     box.style.marginRight = "10px";
-//     box.style.marginBottom = "10px";
-//     box.style.background = "#FF0000";
-//     box.style.boxShadow = "0px 0px 5px 0px rgba(107,107,107,1)";
-//     link.appendChild(box);
-//     document.body.appendChild(link);
-// }
+function gotRelatedConfig(obj){
+    hideRelated = obj.untubeRelated;
+}
+
+function errorRelatedConfig(obj){
+    hideRelated = false;
+}
 
 // Main loop
 function loop() {
-
     // Hide related
     try {
         toggleRelated(hideRelated);
@@ -94,13 +92,23 @@ function loop() {
         hideShowAll(endScreenClasses, hideRelated);
     } catch (ex) {}
 
-    // Add toggle button
-    // try {
-    //     let toggleBox = document.getElementById(toggleId);
-    //     if (!toggleBox) {
-    //         createToggleBox();
-    //     }
-    // } catch (ex) {}
+    // Trigger endscreen cancel button
+    try {
+        if (hideRelated) {
+            let cancelButtons = document.getElementsByClassName(cancelButtonClass);
+            if (cancelButtons.length > 0) {
+                cancelButtons[0].click();
+            }
+        }
+    } catch (ex) {}
+
+    // Trigger skip ad button
+    try {
+        let skipButtons = document.getElementsByClassName(skipButtonClass);
+        if (skipButtons.length > 0) {
+            skipButtons[0].click();
+        }
+    } catch (ex) {}
 
     setTimeout(loop, checkTimeout);
 }
