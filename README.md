@@ -19,7 +19,7 @@ Following the latter analogy regarding an alcoholic, think of this add-on as you
 
 ### Firefox
 Installation is manual, because it's not yet available on the Firefox Extensions portal (or any other browser).
-I'll release the .xpi here once it's published.
+I'll release the .xpi here once it's published, meanwhile you can get it here: https://addons.mozilla.org/firefox/downloads/file/3382560/untube-1.1.0-fx.xpi
 
 ### Chrome
 _Working on it_
