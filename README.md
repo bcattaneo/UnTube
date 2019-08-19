@@ -18,8 +18,9 @@ Following the latter analogy regarding an alcoholic, think of this add-on as you
 ## Installation
 
 ### Firefox
-Installation is manual, because it's not yet available on the Firefox Extensions portal (or any other browser).
-I'll release the .xpi here once it's published, meanwhile you can get it here: https://addons.mozilla.org/firefox/downloads/file/3382560/untube-1.1.0-fx.xpi
+It's available on their [extensions portal](https://addons.mozilla.org/en-US/firefox/addon/untube-new/), you can install it directly and it'll update automatically.
+
+For a manual installation, download and install the latest .xpi [from here](https://github.com/bcattaneo/UnTube/releases)
 
 ### Chrome
 Look for "UnTube" in the chrome web store.
@@ -27,7 +28,7 @@ Look for "UnTube" in the chrome web store.
 ## Contributing
 Clone this repository and run the add-on in debugging mode, that way you can test and modify this add-on without having to install any package.
 
-Firefox: https://blog.mozilla.org/addons/2015/12/23/loading-temporary-add-ons/
+Firefox: [Loading temporary add-ons](https://blog.mozilla.org/addons/2015/12/23/loading-temporary-add-ons/)
 
 Chrome: `chrome://extensions/` -> Toggle "Developer mode" -> "Load Unpacked"
 
